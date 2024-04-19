@@ -1,0 +1,13 @@
+version: "3"
+
+tasks:
+  build:nebula:
+    cmd: go build -gcflags="all=-N -l" -ldflags "-X main.Build=-scr-20240419-a5a07cc" -o ./nebula ./cmd/nebula
+
+  build:nebula-cert:
+    cmd: go build -gcflags="all=-N -l" -ldflags "-X main.Build=-scr-20240419-a5a07cc" -o ./nebula-cert ./cmd/nebula-cert
+
+  build:all:
+    cmds:
+      - task: build:nebula
+      - task: build:nebula-cert
